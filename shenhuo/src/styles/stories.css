@@ -401,3 +401,32 @@
     padding: 12px 16px;
   }
 }
+
+/* --- 已读标记 --- */
+.story-row-card__content {
+  position: relative;
+  overflow: hidden;
+}
+
+.story-row-card__read-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--jade);
+  color: white;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+/* === 朗读高亮 === */
+.story-text .p--reading {
+  background: rgba(184, 150, 78, 0.12);
+  border-left: 3px solid var(--gold);
+  padding-left: 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}

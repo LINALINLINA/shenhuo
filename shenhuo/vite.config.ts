@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
+  // GitHub Pages project site path
+  base: "/shenhuo/",
   build: {
     rollupOptions: {
       input: {

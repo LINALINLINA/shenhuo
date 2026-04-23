@@ -494,3 +494,220 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+/* === 花瓣飘落 === */
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50% 0 50% 0;
+  background: rgba(196, 62, 62, 0.3);
+  pointer-events: none;
+  z-index: 0;
+  animation: petal-fall linear infinite;
+}
+
+/* === 卡片交错入场 === */
+.stagger-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s var(--ease-out),
+    transform 0.4s var(--ease-out);
+}
+
+.stagger-enter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === 护眼模式 === */
+body.eye-care {
+  --paper: #1a1a1a;
+  --paper-deep: #111111;
+  --ink: #c8c8c8;
+  --ink-light: #a0a0a0;
+  --ink-muted: #666;
+  --mountain-far: #3a3a3a;
+  --mountain-mid: #2a2a2a;
+  --mountain-near: #1a1a1a;
+  --sky-dawn: #1a1a2a;
+  background: #111;
+  color: #c8c8c8;
+}
+
+body.eye-care .story-text,
+body.eye-care .discussion-box {
+  background: #1a1a1a;
+}
+
+body.eye-care .story-reader__header h1,
+body.eye-care .story-reader__title {
+  color: #e0d0c0;
+}
+
+body.eye-care .story-reader__category,
+body.eye-care .story-reader__divider {
+  color: #888;
+}
+
+body.eye-care .tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #bbb;
+}
+
+/* === 全局搜索 === */
+.nav__search-btn {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration) var(--ease-out);
+}
+
+.nav__search-btn:hover {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.search-panel {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 420px);
+  max-height: calc(100vh - 120px);
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 16px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.search-panel.hidden {
+  display: none;
+}
+
+.search-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.search-panel__icon {
+  position: absolute;
+  left: 10px;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.search-panel__input {
+  width: 100%;
+  padding: 10px 14px 10px 34px;
+  border: 1px solid var(--mountain-far);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  outline: none;
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+.search-panel__input:focus {
+  border-color: var(--cinnabar);
+}
+
+.search-panel__hint {
+  font-size: 11px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.search-panel__empty {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 20px 0;
+}
+
+.search-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background var(--duration) var(--ease-out);
+}
+
+.search-result:hover {
+  background: var(--paper-deep);
+}
+
+.search-result__type {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.search-result__type--story {
+  background: rgba(196, 62, 62, 0.08);
+  color: var(--cinnabar);
+}
+
+.search-result__type--char {
+  background: rgba(90, 138, 106, 0.08);
+  color: var(--jade);
+}
+
+.search-result__type--place {
+  background: rgba(184, 150, 78, 0.08);
+  color: var(--gold);
+}
+
+.search-result__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.search-result__title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.search-result__desc {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+}

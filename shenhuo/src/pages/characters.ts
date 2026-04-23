@@ -1,5 +1,6 @@
 import "../styles/characters.css";
 import { characters, getCharactersByEra } from "../data/characters";
+import { getStoryById } from "../data/stories";
 import type { Character } from "../data/types";
 
 function renderCharDetailCard(char: Character): string {
@@ -10,7 +11,11 @@ function renderCharDetailCard(char: Character): string {
     ? `tag ${char.tagClass} char-detail-card__era-badge`
     : `tag char-detail-card__era-badge`;
   const relatedHtml = char.relatedStories
-    .map((s) => `<strong>${s}</strong>`)
+    .map((id) => {
+      const s = getStoryById(id);
+      return s ? `<strong>${s.title}</strong>` : "";
+    })
+    .filter(Boolean)
     .join(" · ");
 
   return `
@@ -53,6 +58,57 @@ function renderCharDetail(char: Character): string {
     })
     .join("");
 
+  const artifactsHtml =
+    char.artifacts && char.artifacts.length > 0
+      ? `<div class="char-artifacts">
+        <h4>法宝与技能</h4>
+        ${char.artifacts
+          .map(
+            (a) => `
+            <div class="char-artifact">
+              <span class="char-artifact__name">${a.name}</span>
+              <span class="char-artifact__desc">${a.desc}</span>
+            </div>
+          `,
+          )
+          .join("")}
+      </div>`
+      : "";
+
+  const quotesHtml =
+    char.quotes && char.quotes.length > 0
+      ? `<div class="char-quotes">
+        <h4>经典语录</h4>
+        ${char.quotes
+          .map(
+            (q) => `
+            <blockquote class="char-quote">
+              <p>“${q.text}”</p>
+              ${q.source ? `<cite>—— ${q.source}</cite>` : ""}
+            </blockquote>
+          `,
+          )
+          .join("")}
+      </div>`
+      : "";
+
+  const relatedHtml =
+    char.relatedStories && char.relatedStories.length > 0
+      ? `<div class="char-related">
+        <h4>相关故事</h4>
+        <div class="char-related__list">
+          ${char.relatedStories
+            .map((id) => {
+              const s = getStoryById(id);
+              if (!s) return "";
+              return `<a href="stories.html?id=${encodeURIComponent(id)}" class="char-related__link">${s.title}</a>`;
+            })
+            .filter(Boolean)
+            .join("")}
+        </div>
+      </div>`
+      : "";
+
   return `
   <div class="detail-hero">
     <div class="detail-hero__avatar" style="background: ${char.avatarBg}; display: flex; align-items: center; justify-content: center;">
@@ -66,6 +122,9 @@ function renderCharDetail(char: Character): string {
         ${tagsHtml}
       </div>
       ${descParagraphs}
+      ${artifactsHtml}
+      ${quotesHtml}
+      ${relatedHtml}
     </div>
   </div>`;
 }
@@ -88,6 +147,11 @@ function renderCharGrid(filter: string) {
       const id = card.dataset.id;
       if (id) showCharDetail(id);
     });
+  });
+
+  grid.querySelectorAll<HTMLElement>(".char-detail-card").forEach((el, i) => {
+    el.classList.add("stagger-enter");
+    setTimeout(() => el.classList.add("visible"), i * 60);
   });
 }
 

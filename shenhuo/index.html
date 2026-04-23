@@ -26,6 +26,23 @@
         <div class="nav__seal">神</div>
         <span class="nav__title">神话录</span>
       </a>
+      <button
+        class="nav__search-btn"
+        aria-label="搜索"
+        onclick="window.__hideSearch && window.__hideSearch()"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <circle cx="8" cy="8" r="6" />
+          <line x1="12.5" y1="12.5" x2="16" y2="16" />
+        </svg>
+      </button>
       <ul class="nav__links">
         <li><a href="index.html">首页</a></li>
         <li><a href="characters.html">人物图鉴</a></li>
@@ -290,24 +307,7 @@
             从盘古开天的创世壮举，到大禹治水的坚韧不拔，这些故事传递的价值观至今仍在影响着我们。
           </p>
           <p>与孩子一起读神话，不只是讲故事——更是在传承一种看待世界的方式。</p>
-          <div class="culture-links">
-            <div class="culture-link-item">
-              <span class="dot" style="background: var(--gold)"></span>
-              节日与神话
-            </div>
-            <div class="culture-link-item">
-              <span class="dot" style="background: var(--cinnabar)"></span>
-              民俗溯源
-            </div>
-            <div class="culture-link-item">
-              <span class="dot" style="background: var(--jade)"></span>
-              象征与寓意
-            </div>
-            <div class="culture-link-item">
-              <span class="dot" style="background: var(--mountain-mid)"></span>
-              地理与传说
-            </div>
-          </div>
+          <div id="culture-links" class="culture-links"></div>
         </div>
       </div>
     </section>

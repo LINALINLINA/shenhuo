@@ -1,8 +1,10 @@
 import "../styles/home.css";
 import { getFeaturedStories } from "../data/stories";
 import type { Story } from "../data/types";
-import { getFeaturedCharacters } from "../data/characters";
+import { getFeaturedCharacters, getCharacterById } from "../data/characters";
 import type { Character } from "../data/types";
+import { cultureItems } from "../data/culture";
+import type { CultureItem } from "../data/culture";
 
 function renderStoryCard(story: Story): string {
   const tagHtml = story.tags
@@ -16,8 +18,19 @@ function renderStoryCard(story: Story): string {
       return `<span class="${cls}">${t}</span>`;
     })
     .join("");
+  const charChipsHtml = (story.relatedCharacters || [])
+    .slice(0, 2)
+    .map((cid) => {
+      const ch = getCharacterById(cid);
+      if (!ch) return "";
+      return `<span class="story-card__char-chip">
+      <span class="story-card__char-avatar" style="background: ${ch.avatarBg}; color: ${ch.color}">${ch.avatarChar.charAt(0)}</span>
+      ${ch.name}
+    </span>`;
+    })
+    .join("");
   return `
-  <div class="story-card">
+  <div class="story-card" data-id="${story.id}">
     <div class="story-card__visual" style="background: ${story.gradient}">
       <div class="story-card__visual-bg" style="filter: brightness(0.9)">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -34,6 +47,7 @@ function renderStoryCard(story: Story): string {
         ${tagHtml}
         <span class="story-card__reading-time">阅读约 ${story.readingTime} 分钟</span>
       </div>
+      <div class="story-card__chars">${charChipsHtml}</div>
     </div>
   </div>`;
 }
@@ -64,6 +78,15 @@ function renderCharCard(char: Character): string {
     <h3 class="char-card__name">${char.name}</h3>
     <p class="char-card__role">${roleText}</p>
     <div class="char-card__tags">${tagHtml}</div>
+  </div>`;
+}
+
+function renderCultureCard(item: CultureItem): string {
+  return `
+  <div class="culture-link-item">
+    <span class="dot" style="background: ${item.dotColor}"></span>
+    ${item.title}
+    <p class="culture-link-item__desc">${item.content}</p>
   </div>`;
 }
 
@@ -105,11 +128,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (storiesGrid) {
     storiesGrid.innerHTML = getFeaturedStories().map(renderStoryCard).join("");
+    storiesGrid.querySelectorAll<HTMLElement>(".story-card").forEach((card) => {
+      card.style.cursor = "pointer";
+      card.addEventListener("click", () => {
+        const id = card.dataset.id;
+        if (id)
+          window.location.href = `stories.html?id=${encodeURIComponent(id)}`;
+      });
+    });
   }
   if (charsRow) {
     charsRow.innerHTML = getFeaturedCharacters().map(renderCharCard).join("");
   }
 
+  const cultureLinks = document.getElementById("culture-links");
+  if (cultureLinks) {
+    cultureLinks.innerHTML = cultureItems.map(renderCultureCard).join("");
+  }
+
   initScrollAnimations();
   initScrollHint();
+  initPetals();
 });
+
+function initPetals() {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  for (let i = 0; i < 8; i++) {
+    const petal = document.createElement("span");
+    petal.className = "petal";
+    petal.style.animationDelay = `${Math.random() * 15}s`;
+    petal.style.left = `${Math.random() * 100}%`;
+    petal.style.animationDuration = `${8 + Math.random() * 10}s`;
+    hero.appendChild(petal);
+  }
+}

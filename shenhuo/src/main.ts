@@ -1,4 +1,5 @@
 import "./styles/global.css";
+import { initSearch } from "./components/search";
 
 /* === 导航 active 状态自动识别 === */
 function setActiveNav() {
@@ -35,4 +36,5 @@ function initMobileMenu() {
 document.addEventListener("DOMContentLoaded", () => {
   setActiveNav();
   initMobileMenu();
+  initSearch();
 });
