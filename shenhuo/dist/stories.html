@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>经典故事 — 神话录</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <script type="module" crossorigin src="/assets/stories-CpGykBVp.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/main-CvTj3pQc.js">
+    <link rel="modulepreload" crossorigin href="/assets/stories-BUp7AVYm.js">
+    <link rel="stylesheet" crossorigin href="/assets/main-Dinehr4G.css">
+    <link rel="stylesheet" crossorigin href="/assets/stories-bqOWNwIK.css">
+  </head>
+  <body>
+    <!-- 导航 -->
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__seal">神</div>
+        <span class="nav__title">神话录</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="characters.html">人物图鉴</a></li>
+        <li>
+          <a href="stories.html">经典故事</a>
+        </li>
+        <li><a href="worldmap.html">神话世界</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+      <p class="page-header__eyebrow">STORIES</p>
+      <h1 class="page-header__title">经典神话故事</h1>
+      <p class="page-header__desc">
+        从远古洪荒到仙侠传奇，<br />
+        这里收录了最经典的中国神话故事。
+      </p>
+      <svg
+        class="page-header__bg"
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        style="width: 100%"
+      >
+        <path
+          d="M0,80 L0,40 Q360,10 720,35 Q1080,60 1440,25 L1440,80Z"
+          fill="rgba(200,192,176,0.15)"
+        />
+      </svg>
+    </section>
+
+    <!-- 分类导航 -->
+    <div class="category-nav">
+      <div class="category-row">
+        <div class="category-chip category-chip--active">
+          <div
+            class="category-chip__icon"
+            style="background: rgba(196, 62, 62, 0.08); color: var(--cinnabar)"
+          >
+            全
+          </div>
+          <span class="category-chip__label">全部故事</span>
+          <span class="category-chip__count">42 篇</span>
+        </div>
+        <div class="category-chip">
+          <div
+            class="category-chip__icon"
+            style="background: rgba(184, 150, 78, 0.08); color: var(--gold)"
+          >
+            创
+          </div>
+          <span class="category-chip__label">创世神话</span>
+          <span class="category-chip__count">8 篇</span>
+        </div>
+        <div class="category-chip">
+          <div
+            class="category-chip__icon"
+            style="background: rgba(90, 138, 106, 0.08); color: var(--jade)"
+          >
+            英
+          </div>
+          <span class="category-chip__label">英雄传说</span>
+          <span class="category-chip__count">12 篇</span>
+        </div>
+        <div class="category-chip">
+          <div
+            class="category-chip__icon"
+            style="
+              background: rgba(154, 146, 136, 0.08);
+              color: var(--mountain-mid);
+            "
+          >
+            民
+          </div>
+          <span class="category-chip__label">民间故事</span>
+          <span class="category-chip__count">10 篇</span>
+        </div>
+        <div class="category-chip">
+          <div
+            class="category-chip__icon"
+            style="
+              background: rgba(106, 98, 88, 0.08);
+              color: var(--mountain-near);
+            "
+          >
+            仙
+          </div>
+          <span class="category-chip__label">道教仙话</span>
+          <span class="category-chip__count">8 篇</span>
+        </div>
+        <div class="category-chip">
+          <div
+            class="category-chip__icon"
+            style="
+              background: rgba(196, 62, 62, 0.05);
+              color: var(--cinnabar-dark);
+            "
+          >
+            节
+          </div>
+          <span class="category-chip__label">节日神话</span>
+          <span class="category-chip__count">4 篇</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 故事列表 -->
+    <div id="stories-list-content" class="stories-list"></div>
+
+    <!-- ========== 故事阅读详情展示 ========== -->
+    <div style="background: var(--paper-deep)">
+      <div id="story-reader-content" class="story-reader"></div>
+    </div>
+
+    <!-- 阅读工具栏 -->
+    <div class="reader-toolbar">
+      <button title="缩小字号">A<span style="font-size: 10px">-</span></button>
+      <button title="放大字号">A<span style="font-size: 16px">+</span></button>
+      <div class="reader-toolbar__progress">
+        <div class="reader-toolbar__progress-bar"></div>
+      </div>
+      <button title="上一章">←</button>
+      <button title="下一章">→</button>
+      <button title="收藏">☆</button>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div>
+            <div class="footer__brand">
+              <div class="nav__seal">神</div>
+              <span class="footer__brand-name">神话录</span>
+            </div>
+            <p class="footer__brand-desc">
+              用最温柔的方式，为每一个中国孩子讲述五千年传承的神话故事。
+            </p>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">探索</h4>
+            <a href="stories.html">经典故事</a>
+            <a href="characters.html">人物图鉴</a>
+            <a href="worldmap.html">神话世界</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">分类</h4>
+            <a href="stories.html?category=上古神话">上古神话</a>
+            <a href="stories.html?category=民间传说">民间传说</a>
+            <a href="stories.html?category=道教仙话">道教仙话</a>
+            <a href="stories.html?category=节日神话">节日神话</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">关于</h4>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>神话录 &copy; 2026</span>
+          <span>用心讲述每一个故事</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

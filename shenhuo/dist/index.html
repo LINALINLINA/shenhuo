@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>神话录 — 给孩子的中国神话故事</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <script type="module" crossorigin src="/assets/main-DzjJgcbq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/main-CvTj3pQc.js">
+    <link rel="modulepreload" crossorigin href="/assets/stories-BUp7AVYm.js">
+    <link rel="modulepreload" crossorigin href="/assets/characters-rcsrsEmK.js">
+    <link rel="stylesheet" crossorigin href="/assets/main-Dinehr4G.css">
+    <link rel="stylesheet" crossorigin href="/assets/main-CHy4hiVS.css">
+  </head>
+  <body>
+    <!-- ========== 导航 ========== -->
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__seal">神</div>
+        <span class="nav__title">神话录</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="characters.html">人物图鉴</a></li>
+        <li><a href="stories.html">经典故事</a></li>
+        <li><a href="worldmap.html">神话世界</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ========== Hero ========== -->
+    <section class="hero">
+      <div class="hero__content">
+        <p class="hero__subtitle">给孩子讲中国神话</p>
+        <h1 class="hero__title">神话录</h1>
+        <p class="hero__desc">
+          从盘古开天到八仙过海，<br />
+          用最温柔的方式，为孩子讲述五千年传承的故事。
+        </p>
+        <div class="hero__cta">
+          <a href="stories.html" class="btn btn-primary">开始阅读</a>
+          <a href="characters.html" class="btn btn-outline">浏览人物</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint">
+        <span>向下探索</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <path
+            d="M8 4 L8 18 M3 14 L8 20 L13 14"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <!-- 水墨山景 SVG -->
+      <svg
+        class="hero__mountains"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        style="width: 100%"
+      >
+        <!-- 远山 -->
+        <path
+          d="M0,320 L0,220 Q120,140 240,180 Q360,100 480,160 Q600,80 720,140 Q840,60 960,120 Q1080,40 1200,100 Q1320,60 1440,80 L1440,320Z"
+          fill="rgba(200,192,176,0.25)"
+        />
+        <!-- 中山 -->
+        <path
+          d="M0,320 L0,260 Q180,180 360,240 Q540,160 720,220 Q900,140 1080,200 Q1260,150 1440,180 L1440,320Z"
+          fill="rgba(154,146,136,0.2)"
+        />
+        <!-- 近山 -->
+        <path
+          d="M0,320 L0,280 Q200,220 400,260 Q600,200 800,250 Q1000,210 1200,240 Q1350,220 1440,240 L1440,320Z"
+          fill="rgba(106,98,88,0.15)"
+        />
+        <!-- 云雾 -->
+        <ellipse
+          cx="300"
+          cy="250"
+          rx="200"
+          ry="30"
+          fill="rgba(245,240,232,0.6)"
+        />
+        <ellipse
+          cx="900"
+          cy="230"
+          rx="250"
+          ry="35"
+          fill="rgba(245,240,232,0.5)"
+        />
+        <ellipse
+          cx="1200"
+          cy="260"
+          rx="180"
+          ry="25"
+          fill="rgba(245,240,232,0.4)"
+        />
+      </svg>
+    </section>
+
+    <!-- ========== 精选故事 ========== -->
+    <section class="section">
+      <div class="section__header">
+        <p class="section__eyebrow">STORIES</p>
+        <h2 class="section__title">经典神话故事</h2>
+        <div class="section__divider">传承千年的东方想象</div>
+      </div>
+
+      <div id="featured-stories" class="stories-grid"></div>
+
+      <div style="text-align: center; margin-top: var(--space-lg)">
+        <a href="stories.html" class="btn btn-outline">查看全部故事</a>
+      </div>
+    </section>
+
+    <!-- ========== 神话人物 ========== -->
+    <section class="section section--alt">
+      <div class="section__header">
+        <p class="section__eyebrow">CHARACTERS</p>
+        <h2 class="section__title">神话人物图鉴</h2>
+        <div class="section__divider">认识那些不朽的名字</div>
+      </div>
+
+      <div id="featured-characters" class="characters-row"></div>
+
+      <div style="text-align: center; margin-top: var(--space-lg)">
+        <a href="characters.html" class="btn btn-outline">浏览全部人物</a>
+      </div>
+    </section>
+
+    <!-- ========== 文化渊源 ========== -->
+    <section class="section">
+      <div class="section__header">
+        <p class="section__eyebrow">CULTURE</p>
+        <h2 class="section__title">神话与文化</h2>
+        <div class="section__divider">从故事中读懂中国</div>
+      </div>
+
+      <div class="culture-grid">
+        <div
+          class="culture-visual"
+          style="
+            background: linear-gradient(
+              180deg,
+              var(--sky-dawn),
+              var(--paper-deep)
+            );
+          "
+        >
+          <!-- 神话世界简图 -->
+          <svg viewBox="0 0 400 340" width="90%" height="90%">
+            <!-- 天界 -->
+            <rect
+              x="40"
+              y="20"
+              width="320"
+              height="80"
+              rx="8"
+              fill="rgba(184,150,78,0.08)"
+              stroke="rgba(184,150,78,0.2)"
+              stroke-width="1"
+            />
+            <text
+              x="200"
+              y="50"
+              text-anchor="middle"
+              font-family="'Noto Serif SC', serif"
+              font-size="16"
+              fill="#b8964e"
+            >
+              天 界
+            </text>
+            <text
+              x="200"
+              y="74"
+              text-anchor="middle"
+              font-family="'Noto Sans SC', sans-serif"
+              font-size="11"
+              fill="#8a8578"
+            >
+              昆仑山 · 天庭 · 瑶池
+            </text>
+
+            <!-- 人间 -->
+            <rect
+              x="40"
+              y="120"
+              width="320"
+              height="80"
+              rx="8"
+              fill="rgba(90,138,106,0.08)"
+              stroke="rgba(90,138,106,0.2)"
+              stroke-width="1"
+            />
+            <text
+              x="200"
+              y="150"
+              text-anchor="middle"
+              font-family="'Noto Serif SC', serif"
+              font-size="16"
+              fill="#5a8a6a"
+            >
+              人 间
+            </text>
+            <text
+              x="200"
+              y="174"
+              text-anchor="middle"
+              font-family="'Noto Sans SC', sans-serif"
+              font-size="11"
+              fill="#8a8578"
+            >
+              五岳 · 四海 · 神州大地
+            </text>
+
+            <!-- 地府 -->
+            <rect
+              x="40"
+              y="220"
+              width="320"
+              height="80"
+              rx="8"
+              fill="rgba(154,146,136,0.08)"
+              stroke="rgba(154,146,136,0.2)"
+              stroke-width="1"
+            />
+            <text
+              x="200"
+              y="250"
+              text-anchor="middle"
+              font-family="'Noto Serif SC', serif"
+              font-size="16"
+              fill="#9a9288"
+            >
+              冥 界
+            </text>
+            <text
+              x="200"
+              y="274"
+              text-anchor="middle"
+              font-family="'Noto Sans SC', sans-serif"
+              font-size="11"
+              fill="#8a8578"
+            >
+              幽冥 · 黄泉 · 六道轮回
+            </text>
+
+            <!-- 连线 -->
+            <line
+              x1="200"
+              y1="100"
+              x2="200"
+              y2="120"
+              stroke="#b8964e"
+              stroke-width="1"
+              stroke-dasharray="4,3"
+              opacity="0.4"
+            />
+            <line
+              x1="200"
+              y1="200"
+              x2="200"
+              y2="220"
+              stroke="#9a9288"
+              stroke-width="1"
+              stroke-dasharray="4,3"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+
+        <div class="culture-text">
+          <h3>神话不止是故事</h3>
+          <p>
+            中国神话是中华文明的精神源流。每个故事背后，都蕴含着古人对自然、生命和宇宙的理解。
+            从盘古开天的创世壮举，到大禹治水的坚韧不拔，这些故事传递的价值观至今仍在影响着我们。
+          </p>
+          <p>与孩子一起读神话，不只是讲故事——更是在传承一种看待世界的方式。</p>
+          <div class="culture-links">
+            <div class="culture-link-item">
+              <span class="dot" style="background: var(--gold)"></span>
+              节日与神话
+            </div>
+            <div class="culture-link-item">
+              <span class="dot" style="background: var(--cinnabar)"></span>
+              民俗溯源
+            </div>
+            <div class="culture-link-item">
+              <span class="dot" style="background: var(--jade)"></span>
+              象征与寓意
+            </div>
+            <div class="culture-link-item">
+              <span class="dot" style="background: var(--mountain-mid)"></span>
+              地理与传说
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 页脚 ========== -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div>
+            <div class="footer__brand">
+              <div class="nav__seal">神</div>
+              <span class="footer__brand-name">神话录</span>
+            </div>
+            <p class="footer__brand-desc">
+              用最温柔的方式，为每一个中国孩子讲述五千年传承的神话故事。让古老的传说在新的时代里继续发光。
+            </p>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">探索</h4>
+            <a href="stories.html">经典故事</a>
+            <a href="characters.html">人物图鉴</a>
+            <a href="worldmap.html">神话世界</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">分类</h4>
+            <a href="stories.html?category=上古神话">上古神话</a>
+            <a href="stories.html?category=民间传说">民间传说</a>
+            <a href="stories.html?category=道教仙话">道教仙话</a>
+            <a href="stories.html?category=节日神话">节日神话</a>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">关于</h4>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>神话录 &copy; 2026</span>
+          <span>用心讲述每一个故事</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

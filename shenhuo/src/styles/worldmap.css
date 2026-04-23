@@ -1,0 +1,373 @@
+/* --- 星空 --- */
+.page-header__stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page-header__stars span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* --- 世界地图 --- */
+.world-map-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.world-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 600px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow-lg);
+}
+
+.world-map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- 地图地标 --- */
+.map-region {
+  position: absolute;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease-out);
+}
+
+.map-region:hover {
+  transform: scale(1.05);
+}
+
+.map-region__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+  position: relative;
+}
+
+.map-region__dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.map-region__label {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.map-region__sublabel {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* --- 区域配色 --- */
+.map-region--heaven .map-region__dot {
+  border-color: var(--gold);
+  background: rgba(184, 150, 78, 0.2);
+}
+.map-region--heaven .map-region__dot::after {
+  border-color: var(--gold);
+}
+.map-region--heaven .map-region__label {
+  color: var(--gold);
+}
+
+.map-region--mortal .map-region__dot {
+  border-color: var(--jade);
+  background: rgba(90, 138, 106, 0.2);
+}
+.map-region--mortal .map-region__dot::after {
+  border-color: var(--jade);
+}
+.map-region--mortal .map-region__label {
+  color: var(--jade);
+}
+
+.map-region--underworld .map-region__dot {
+  border-color: var(--mountain-mid);
+  background: rgba(154, 146, 136, 0.2);
+}
+.map-region--underworld .map-region__dot::after {
+  border-color: var(--mountain-mid);
+}
+.map-region--underworld .map-region__label {
+  color: var(--mountain-mid);
+}
+
+.map-region--sea .map-region__dot {
+  border-color: #3a8ab8;
+  background: rgba(58, 138, 184, 0.2);
+}
+.map-region--sea .map-region__dot::after {
+  border-color: #3a8ab8;
+}
+.map-region--sea .map-region__label {
+  color: #3a8ab8;
+}
+
+/* --- 地图 tooltip --- */
+.map-tooltip {
+  position: fixed;
+  z-index: 200;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
+  max-width: 280px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.map-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-tooltip h4 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.map-tooltip p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+/* --- 三界详解 --- */
+.realms-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg) var(--space-2xl);
+}
+
+.realm-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.realm-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid;
+  transition: all var(--duration) var(--ease-out);
+}
+
+.realm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.realm-card--heaven {
+  border-color: var(--gold);
+}
+.realm-card--mortal {
+  border-color: var(--jade);
+}
+.realm-card--underworld {
+  border-color: var(--mountain-mid);
+}
+
+.realm-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: var(--space-sm);
+}
+
+.realm-card--heaven .realm-card__icon {
+  background: rgba(184, 150, 78, 0.1);
+  color: var(--gold);
+}
+.realm-card--mortal .realm-card__icon {
+  background: rgba(90, 138, 106, 0.1);
+  color: var(--jade);
+}
+.realm-card--underworld .realm-card__icon {
+  background: rgba(154, 146, 136, 0.1);
+  color: var(--mountain-mid);
+}
+
+.realm-card h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.realm-card__sub {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.realm-card p {
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.9;
+  margin-bottom: var(--space-sm);
+}
+
+.realm-card__places {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.realm-card__places li {
+  padding: 4px 12px;
+  background: var(--paper);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--ink-light);
+  font-family: var(--font-serif);
+}
+
+/* --- 关系图谱 --- */
+.relations-section {
+  background: var(--paper-deep);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.relations-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.relations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.relation-card {
+  display: flex;
+  gap: var(--space-sm);
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.relation-card__visual {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-brush);
+  font-size: 28px;
+}
+
+.relation-card__info h4 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.relation-card__info p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+/* --- 响应式 --- */
+@media (max-width: 900px) {
+  .realm-cards {
+    grid-template-columns: 1fr;
+  }
+  .relations-grid {
+    grid-template-columns: 1fr;
+  }
+  .world-map {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .world-map {
+    min-height: 400px;
+    aspect-ratio: auto;
+    height: 400px;
+  }
+}
+
+.map-tooltip--mobile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 280px;
+  text-align: center;
+  padding: 20px 24px;
+  z-index: 1000;
+}
+
+.map-tooltip--mobile::before {
+  content: "×";
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--ink-muted);
+}
